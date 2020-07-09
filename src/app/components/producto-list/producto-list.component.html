@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <span class="h2">PRODUCTOS DE LA EMPRESA {{empresa.name}}</span>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td>NAME</td>
+                <td>PRICE</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of products">
+                <td>
+                    <p>{{product.name}}</p>
+                </td>
+                <td>
+                    <p>{{product.price}}</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-2">
+                <button (click)="do_operation(empresa)" class="text-white btn btn-block bg-primary">AGREGAR <i class="text-white fa fa-white"></i></button>
+            </div>
+            <div class="col-2">
+                <input type="button" value="VOLVER" class="text-white btn btn-block bg-info" (click)="go_back()">
+            </div>
+        </div>
+    </div>
+</div>

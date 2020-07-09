@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <span class="h2">EMPRESAS</span>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td>NAME</td>
+                <td>ADDRESS</td>
+                <td>ACTIONS</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let empresa of empresas_list">
+                <td>
+                    <p>{{empresa.name}}</p>
+                </td>
+                <td>
+                    <p>{{empresa.address}}</p>
+                </td>
+                <td>
+                    <i class="mr-3 text-primary cursor fa fa-edit" (click)="update_empresa(empresa)"></i>
+                    <i class="mr-3 text-primary cursor fa fa-search" (click)="fetch_productos(empresa)"></i>
+                    <i class="text-primary fa fa-trash cursor"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-2">
+                <button (click)="create_empresa()" class="btn btn-block btn-primary">AGREGAR <i class="text-white fa fa-pencil"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

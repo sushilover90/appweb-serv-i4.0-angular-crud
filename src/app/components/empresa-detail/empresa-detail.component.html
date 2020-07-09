@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <span class="h2">{{button_operation_text}} EMPRESA</span>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td>NAME</td>
+                <td>ADDRESS</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" name="empresa_name" id="empresa_name" [(ngModel)]="empresa.name">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="empresa_address" id="empresa_address" [(ngModel)]="empresa.address">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-2">
+                <input (click)="do_operation()" type="button" [value]="button_operation_text" class="text-white btn btn-block bg-primary">
+            </div>
+            <div class="col-2">
+                <input type="button" value="CANCELAR" class="text-white btn btn-block bg-danger" (click)="go_back()">
+            </div>
+        </div>
+    </div>
+</div>

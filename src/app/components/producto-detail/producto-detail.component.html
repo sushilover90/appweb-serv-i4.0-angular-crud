@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <span class="h2">INSERTAR PRODUCTO DE LA EMPRESA {{empresa.name}}</span>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td>NAME</td>
+                <td>PRICE</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" name="product_name" id="product_name" [(ngModel)]="product.name">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="product_price" id="product_price" [(ngModel)]="product.price">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-2">
+                <button (click)="do_operation()" class="btn btn-block bg-primary">AGREGAR <i class="text-white fa fa-white"></i></button>
+            </div>
+            <div class="col-2">
+                <input type="button" value="VOLVER" class="btn btn-block bg-info" (click)="go_back()">
+            </div>
+        </div>
+    </div>
+</div>

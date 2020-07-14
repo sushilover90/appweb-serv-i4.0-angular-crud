@@ -8,6 +8,7 @@
             <tr>
                 <td>NAME</td>
                 <td>PRICE</td>
+                <td>ACTIONS</td>
             </tr>
             </thead>
             <tbody>
@@ -18,6 +19,10 @@
                 <td>
                     <p>{{product.price}}</p>
                 </td>
+                <td>
+                    <i class="mr-3 text-primary cursor fa fa-edit" (click)="update_product(product)"></i>
+                    <i class="text-primary fa fa-trash cursor"></i>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -25,7 +30,7 @@
     <div class="card-footer">
         <div class="row">
             <div class="col-2">
-                <button (click)="do_operation(empresa)" class="text-white btn btn-block bg-primary">AGREGAR <i class="text-white fa fa-white"></i></button>
+                <button (click)="do_operation(empresa)" class="btn btn-block bg-primary text-white">AGREGAR <i class="text-white fa fa-pencil"></i></button>
             </div>
             <div class="col-2">
                 <input type="button" value="VOLVER" class="text-white btn btn-block bg-info" (click)="go_back()">

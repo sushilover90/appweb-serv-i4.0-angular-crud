@@ -25,6 +25,12 @@ export class EmpresaListComponent implements OnInit {
 
     this.empresas_list = [];
 
+    this.fetch_empresas();
+
+  }
+
+  fetch_empresas(){
+
     const url = `${AuthService.api_url}/empresa/get`;
 
     this.httpClientService.makeRequest('get',url)
@@ -47,6 +53,23 @@ export class EmpresaListComponent implements OnInit {
   create_empresa(){
 
       this.insert_empresa.emit(1);
+
+  }
+
+  delete_empresa(empresa){
+
+    this.httpClientService.makeRequest('delete',`${AuthService.api_url}/empresa/delete`,
+        {
+          body:{
+            id:empresa.id
+          }
+        })
+        .subscribe(
+            data=>{
+              console.log(data);
+              this.fetch_empresas();
+            }
+        )
 
   }
 

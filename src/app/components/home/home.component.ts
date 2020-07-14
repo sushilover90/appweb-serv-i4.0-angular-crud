@@ -3,6 +3,8 @@ import {HttpClientService} from "../../services/http-client.service";
 import {Empresa} from "../../interfaces/empresa";
 import {AuthService} from "../../services/auth.service";
 import {ArrayType} from "@angular/compiler";
+import {Router} from "@angular/router";
+import {Product} from "../../interfaces/product";
 
 @Component({
   selector: 'app-home',
@@ -13,12 +15,15 @@ export class HomeComponent implements OnInit {
 
   public switch_component:number = 0;
 
-  // the empresa which was chosen from the list
+  // the empresa which was chosen from the empresa list
   public empresa:Empresa;
 
   public username:string = null;
 
-  constructor(private httpClientService: HttpClientService) {}
+  // the product which was chosen from the product list
+  public product:Product;
+
+  constructor(private router:Router) {}
 
   ngOnInit(): void {
 
@@ -31,6 +36,12 @@ export class HomeComponent implements OnInit {
       name: string;
       updated_at: string;
     };
+
+    this.product = new class implements Product {
+      _id: string | number;
+      name: string;
+      price: number;
+    }
 
   }
 
@@ -45,6 +56,11 @@ export class HomeComponent implements OnInit {
     if(data.empresa !== null || true)
       this.empresa = data.empresa;
 
+    if(data.product !== null || true)
+      this.product = data.product;
+
+    console.log(`Home.product= ${this.product}`);
+
     this.switch_component = data.switch_component;
   }
 
@@ -58,6 +74,13 @@ export class HomeComponent implements OnInit {
 
     this._switch_component(data);
 
+
+  }
+
+  log_out(){
+
+    localStorage.clear();
+    this.router.navigate(['/login']);
 
   }
 

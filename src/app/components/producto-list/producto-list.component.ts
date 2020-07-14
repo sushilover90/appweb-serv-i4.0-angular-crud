@@ -11,11 +11,11 @@ import {Empresa} from "../../interfaces/empresa";
 })
 export class ProductoListComponent implements OnInit {
 
+    public products:Array<Product> = null;
+
     @Input() public empresa:Empresa;
 
     @Output() public switch_prod_detail = new EventEmitter();
-
-    public products:Array<Product> = null;
 
     @Output() public switch_component = new EventEmitter();
 
@@ -48,9 +48,31 @@ export class ProductoListComponent implements OnInit {
 
     do_operation(empresa){
 
+        let product:Product = new class implements Product {
+            _id: string | number;
+            name: string;
+            price: number;
+        }
+
+        product.name = '';
+        product.price = null;
+
         const data = {
             empresa:empresa,
+            product: product,
             switch_component: 3
+        }
+
+        this.switch_prod_detail.emit(data);
+
+    }
+
+    update_product(product){
+
+        const data = {
+            empresa:this.empresa,
+            switch_component: 3,
+            product: product
         }
 
         this.switch_prod_detail.emit(data);

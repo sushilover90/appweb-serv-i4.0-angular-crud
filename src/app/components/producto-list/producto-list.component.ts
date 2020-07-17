@@ -25,24 +25,7 @@ export class ProductoListComponent implements OnInit {
 
         console.log(this.empresa.id);
 
-        this.products = [];
-
-        this.httpClientService.makeRequest('post',`${AuthService.api_url}/producto/get`,{
-            body:{
-                empresa_id: this.empresa.id
-            }
-        }).subscribe(
-                data=> {
-                    console.log(data);
-                    data.forEach(
-                        // @ts-ignore
-                        element => this.products.push(element[0])
-                    );
-                },
-                error => {
-                    console.log(error)
-                }
-            );
+        this.fill_products()
 
     }
 
@@ -67,7 +50,7 @@ export class ProductoListComponent implements OnInit {
 
     }
 
-    update_product(product){
+    update_product(product:Product){
 
         const data = {
             empresa:this.empresa,
@@ -79,11 +62,52 @@ export class ProductoListComponent implements OnInit {
 
     }
 
+    delete_product(product:Product){
+
+        const url:string = `${AuthService.api_url}/producto/delete`;
+
+        this.httpClientService.makeRequest('delete',url,{
+           body:{
+               empresa_id:this.empresa.id,
+               product_id:product._id
+           }
+        }).subscribe(
+            (data) => {
+                console.log(data);
+                this.fill_products()
+            }
+        );
+
+    }
+
     go_back(){
 
         this.empresa = null;
 
         this.switch_component.emit(0);
+
+    }
+
+    fill_products(){
+
+        this.products = [];
+
+        this.httpClientService.makeRequest('post',`${AuthService.api_url}/producto/get`,{
+            body:{
+                empresa_id: this.empresa.id
+            }
+        }).subscribe(
+            data=> {
+                console.log(data);
+                data.forEach(
+                    // @ts-ignore
+                    element => this.products.push(element[0])
+                );
+            },
+            error => {
+                console.log(error)
+            }
+        );
 
     }
 

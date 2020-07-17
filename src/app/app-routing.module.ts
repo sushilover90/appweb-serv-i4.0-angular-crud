@@ -9,11 +9,11 @@ import {AuthGuard} from "./guards/auth.guard";
 const routes: Routes = [
   {
     path:'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path:'register',
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path:'home',

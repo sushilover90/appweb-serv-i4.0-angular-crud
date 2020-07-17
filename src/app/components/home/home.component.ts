@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClientService} from "../../services/http-client.service";
 import {Empresa} from "../../interfaces/empresa";
-import {AuthService} from "../../services/auth.service";
-import {ArrayType} from "@angular/compiler";
 import {Router} from "@angular/router";
 import {Product} from "../../interfaces/product";
 
